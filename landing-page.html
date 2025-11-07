@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sennkai Labs</title>
+  <meta name="description" content="Sennkai Labs builds pragmatic AI systems, automation loops, and data platforms that compound. From prototype to production in weeks, not months.">
+  <meta property="og:title" content="Sennkai Labs">
+  <meta property="og:description" content="We build automation and AI loops that compound. Pragmatic, production-grade, fast.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sennkai.com">
+  <meta property="og:image" content="https://sennkai.com/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            senn: {
+              50: '#f7f7ff',
+              100: '#f0e9ff',
+              200: '#e0d0ff',
+              300: '#c4a6ff',
+              400: '#a276ff',
+              500: '#7c3aed',   /* primary accent */
+              600: '#6b2ed7',
+              700: '#5824b3',
+              800: '#4a1f93',
+              900: '#35156a'
+            }
+          },
+          boxShadow: {
+            glow: '0 0 0 2px rgba(124,58,237,0.25), 0 10px 30px rgba(124,58,237,0.35)'
+          },
+          backgroundImage: {
+            grid: 'linear-gradient(rgba(124,58,237,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.08) 1px, transparent 1px)'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .backdrop-grid {
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1), rgba(0,0,0,0.15) 60%, rgba(0,0,0,0) 75%);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-neutral-950 text-white antialiased">
+  <div class="fixed inset-0 -z-10">
+    <div class="absolute inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950 to-neutral-900"></div>
+    <div class="absolute inset-0 bg-grid backdrop-grid pointer-events-none"></div>
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 h-[480px] w-[480px] rounded-full blur-3xl opacity-30" style="background: radial-gradient(closest-side, #7c3aed, transparent 70%);"></div>
+  </div>
+
+  <header class="relative z-40">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+      <a href="#" class="flex items-center gap-3">
+        <img src="apple-touch-icon.png" alt="Sennkai Labs" class="h-8 w-8 rounded-md shadow-glow">
+        <span class="text-sm font-semibold tracking-[0.28em] text-white/90">SENNKAI LABS</span>
+      </a>
+      <div id="desktop-menu" class="hidden md:flex items-center gap-8">
+        <a href="#services" class="text-white/80 hover:text-white">Services</a>
+        <a href="#products" class="text-white/80 hover:text-white">Products</a>
+        <a href="#pricing" class="text-white/80 hover:text-white">Pricing</a>
+        <a href="#contact" class="text-white/80 hover:text-white">Contact</a>
+        <a href="#pricing" class="inline-flex items-center rounded-lg bg-senn-500 px-4 py-2 text-sm font-semibold text-white shadow-glow hover:bg-senn-600 transition">Get started</a>
+      </div>
+      <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" class="md:hidden rounded-md border border-white/10 px-3 py-2 text-white/80 hover:bg-white/10 transition">
+        <i class="bi bi-list text-lg"></i>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 right-0 z-40 bg-neutral-950/95 border-t border-white/10 px-6 py-4 backdrop-blur">
+      <div class="flex flex-col gap-2">
+        <a href="#services" class="text-white/80 hover:text-white py-2">Services</a>
+        <a href="#products" class="text-white/80 hover:text-white py-2">Products</a>
+        <a href="#pricing" class="text-white/80 hover:text-white py-2">Pricing</a>
+        <a href="#contact" class="text-white/80 hover:text-white py-2">Contact</a>
+        <a href="#pricing" class="inline-flex items-center justify-center rounded-lg bg-senn-500 px-4 py-2 text-sm font-semibold text-white shadow-glow hover:bg-senn-600 transition mt-2">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="relative mx-auto max-w-7xl px-6 pt-10 pb-20 md:pt-16 md:pb-28">
+      <div class="mx-auto max-w-3xl text-center">
+        <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-5">
+          <span class="h-2 w-2 rounded-full bg-senn-500"></span>
+          <span>旋回 — loops that compound</span>
+        </div>
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-6xl">
+          Automation and AI loops that compound
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-white/70">
+          We build pragmatic AI systems, automation, and data platforms. From idea to production in weeks, not months.
+          Software that ships. Outcomes over hype.
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-4">
+          <a href="#pricing" class="inline-flex items-center gap-2 rounded-xl bg-senn-500 px-6 py-3 font-semibold text-white shadow-glow hover:bg-senn-600 transition">
+            Get started
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" class="opacity-90"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 font-semibold text-white/90 hover:bg-white/10 transition">
+            Talk to us
+          </a>
+        </div>
+        <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-sm text-white/60">
+          <div class="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+            <i class="bi bi-diagram-3 text-senn-300 text-xl mb-2 block"></i>
+            <span>LLM & agentic workflows</span>
+          </div>
+          <div class="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+            <i class="bi bi-collection text-senn-300 text-xl mb-2 block"></i>
+            <span>Data pipelines & quality</span>
+          </div>
+          <div class="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+            <i class="bi bi-tools text-senn-300 text-xl mb-2 block"></i>
+            <span>Internal tools & ops</span>
+          </div>
+          <div class="rounded-lg border border-white/10 bg-white/[0.03] p-4">
+            <i class="bi bi-shield-check text-senn-300 text-xl mb-2 block"></i>
+            <span>Infra you can trust</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="relative mx-auto max-w-7xl px-6 py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl">Our services</h2>
+        <p class="mt-4 text-white/70">Partner with us to ship production systems quickly and sanely.</p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-senn-500/20 text-senn-300">
+            <i class="bi bi-kanban text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold">CRM & ERP (Tailor‑Made)</h3>
+          <p class="mt-2 text-sm text-white/70">Custom CRM/ERP aligned to your workflows and KPIs. Schema, UX, and integrations that fit your business case.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-senn-500/20 text-senn-300">
+            <i class="bi bi-gear-wide-connected text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold">Google Workspace Automations</h3>
+          <p class="mt-2 text-sm text-white/70">Tailor‑made Apps Script automations for Gmail, Sheets, Docs, and Calendar. Reliable, maintainable, and fast.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-senn-500/20 text-senn-300">
+            <i class="bi bi-cpu text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold">Deep Reinforcement Learning</h3>
+          <p class="mt-2 text-sm text-white/70">Policy tuning for LLMs and constrained environments. Safe, sample‑efficient control under real‑world limits.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-senn-500/20 text-senn-300">
+            <i class="bi bi-cash-coin text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold">Fintech Consulting</h3>
+          <p class="mt-2 text-sm text-white/70">Compliance‑aware product strategy, data, and risk. Payments, KYC/AML, and ledger integrations done right.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="relative mx-auto max-w-7xl px-6 py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl">Our products</h2>
+        <p class="mt-4 text-white/70">Opinionated building blocks that reduce risk and time-to-value.</p>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-1">
+        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <div class="mb-4 flex items-center justify-between">
+            <span class="text-sm font-semibold text-senn-300 flex items-center gap-2">
+              <i class="bi bi-graph-up-arrow text-senn-300"></i>
+              Financial Tracker App
+            </span>
+            <span class="rounded-full bg-white/5 px-2 py-1 text-xs text-white/60">千回</span>
+          </div>
+          <p class="text-sm text-white/70">Simple, reliable finance tracking for teams. Budgets, cashflow, and alerts. Built for clarity and speed.</p>
+          <div class="mt-6 flex items-center gap-3">
+            <a href="mailto:sales@sennkai.com?subject=Financial%20Tracker%20App%20—%20trial%20request" class="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold hover:bg-white/10 transition">
+              Try it free
+            </a>
+            <a href="#pricing" class="inline-flex items-center gap-2 rounded-lg bg-senn-500 px-4 py-2 text-sm font-semibold text-white hover:bg-senn-600 transition">
+              Subscribe
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="relative mx-auto max-w-7xl px-6 py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl">Simple pricing that scales</h2>
+        <p class="mt-4 text-white/70">Start small. Grow when it works. No lock‑in.</p>
+      </div>
+      <div class="mt-8 flex items-center justify-center gap-3">
+        <span class="text-sm text-white/60">Monthly</span>
+        <label class="relative inline-flex cursor-pointer items-center">
+          <input id="billing-toggle" type="checkbox" class="peer sr-only">
+          <div class="h-6 w-11 rounded-full bg-white/20 after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-senn-500 peer-checked:after:translate-x-5"></div>
+        </label>
+        <span class="text-sm text-white/60">Yearly <span class="ml-1 rounded-full bg-senn-500/20 px-2 py-0.5 text-xs text-senn-200">Save 30%</span></span>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <h3 class="text-lg font-semibold">Starter</h3>
+          <p class="mt-1 text-sm text-white/70">Prototype and validate.</p>
+          <div class="mt-6 flex items-end gap-2">
+            <span class="text-3xl font-extrabold" data-monthly="$10–$200" data-yearly="$7–$140">$10–$200</span>
+            <span class="mb-1 text-sm text-white/60">/mo</span>
+          </div>
+          <p class="mt-1 text-xs text-white/50" data-alt-monthly>or $7–$140/mo billed yearly (–30%)</p>
+          <p class="mt-1 text-xs text-white/50 hidden" data-alt-yearly>or $10–$200/mo billed monthly</p>
+          <p class="mt-1 text-xs text-white/50">per user</p>
+          <ul class="mt-6 space-y-3 text-sm text-white/80">
+            <li>One use case</li>
+            <li>2 integrations</li>
+            <li>Basic monitoring</li>
+            <li>Email support</li>
+          </ul>
+          <a href="#contact" class="mt-6 inline-flex w-full items-center justify-center rounded-lg border border-white/15 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10 transition">Contact sales</a>
+        </div>
+
+        <div class="relative rounded-2xl border border-senn-500/40 bg-white/[0.04] p-6 shadow-glow">
+          <div class="absolute -top-3 right-4 rounded-full bg-senn-500 px-2 py-1 text-xs font-semibold">Popular</div>
+          <h3 class="text-lg font-semibold">Growth</h3>
+          <p class="mt-1 text-sm text-white/70">Production and scale.</p>
+          <div class="mt-6 flex items-end gap-2">
+            <span class="text-3xl font-extrabold" data-monthly="$3,000" data-yearly="$2,100">$3,000</span>
+            <span class="mb-1 text-sm text-white/60">/mo</span>
+          </div>
+          <p class="mt-1 text-xs text-white/50" data-alt-monthly>or $2,100/mo billed yearly (–30%)</p>
+          <p class="mt-1 text-xs text-white/50 hidden" data-alt-yearly>or $3,000/mo billed monthly</p>
+          <p class="mt-1 text-xs text-white/50">per user</p>
+          <ul class="mt-6 space-y-3 text-sm text-white/80">
+            <li>Up to 3 use cases</li>
+            <li>5+ integrations</li>
+            <li>Advanced observability</li>
+            <li>Response-time SLOs</li>
+          </ul>
+          <a href="#contact" class="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-senn-500 px-4 py-2 font-semibold text-white hover:bg-senn-600 transition">Talk to us</a>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+          <h3 class="text-lg font-semibold">Enterprise</h3>
+          <p class="mt-1 text-sm text-white/70">Custom solutions.</p>
+          <div class="mt-6 flex items-end gap-2">
+            <span class="text-3xl font-extrabold" data-monthly="Custom" data-yearly="Custom">Custom</span>
+          </div>
+          <ul class="mt-6 space-y-3 text-sm text-white/80">
+            <li>Bespoke workflows</li>
+            <li>SOC2/Security reviews</li>
+            <li>On-call & SLAs</li>
+            <li>Dedicated support</li>
+          </ul>
+          <a href="#contact" class="mt-6 inline-flex w-full items-center justify-center rounded-lg border border-white/15 bg-white/5 px-4 py-2 font-semibold hover:bg-white/10 transition">Get a quote</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="relative mx-auto max-w-7xl px-6 py-20">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold sm:text-4xl">Contact us</h2>
+        <p class="mt-4 text-white/70">Tell us about your goals. We’ll reply within 24 hours.</p>
+      </div>
+      <div class="mx-auto mt-10 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+        <form id="contact-form" class="grid gap-5 md:grid-cols-2">
+          <div class="md:col-span-1">
+            <label for="name" class="mb-2 block text-sm text-white/80">Full name</label>
+            <input id="name" name="name" type="text" required placeholder="Jane Doe" class="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm outline-none placeholder:text-white/40 focus:border-senn-500">
+          </div>
+          <div class="md:col-span-1">
+            <label for="email" class="mb-2 block text-sm text-white/80">Work email</label>
+            <input id="email" name="email" type="email" required placeholder="jane@company.com" class="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm outline-none placeholder:text-white/40 focus:border-senn-500">
+          </div>
+          <div class="md:col-span-1">
+            <label for="company" class="mb-2 block text-sm text-white/80">Company</label>
+            <input id="company" name="company" type="text" placeholder="Company Inc." class="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm outline-none placeholder:text-white/40 focus:border-senn-500">
+          </div>
+          <div class="md:col-span-1">
+            <label for="budget" class="mb-2 block text-sm text-white/80">Budget</label>
+            <select id="budget" name="budget" class="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm outline-none focus:border-senn-500">
+              <option value="" selected>Choose a range</option>
+              <option value="10-25k">$10k–$25k</option>
+              <option value="25-50k">$25k–$50k</option>
+              <option value="50-100k">$50k–$100k</option>
+              <option value="100k+">$100k+</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label for="message" class="mb-2 block text-sm text-white/80">What would you like to build?</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Share context, constraints, and desired outcomes." class="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm outline-none placeholder:text-white/40 focus:border-senn-500"></textarea>
+          </div>
+          <div class="md:col-span-2 flex items-center justify-between gap-4">
+            <p class="text-xs text-white/50">By submitting, you agree to be contacted about your inquiry.</p>
+            <button type="submit" class="inline-flex items-center gap-2 rounded-lg bg-senn-500 px-5 py-2 font-semibold text-white hover:bg-senn-600 transition">
+              Send message
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 12h14m0 0-6-6m6 6-6 6"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="apple-touch-icon.png" alt="Sennkai Labs" class="h-6 w-6 rounded-md">
+        <span class="text-xs font-semibold tracking-[0.28em] text-white/60">SENNKAI LABS</span>
+      </div>
+      <p class="text-xs text-white/50">© <span id="year"></span> Sennkai Labs. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-xs text-white/60">
+        <a href="#contact" class="hover:text-white">Contact</a>
+        <a href="#pricing" class="hover:text-white">Pricing</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CONTACT_EMAIL = 'sales@sennkai.com';
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const setMenuState = (isOpen) => {
+      if (!mobileMenu || !menuToggle) return;
+      mobileMenu.classList.toggle('hidden', !isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      const icon = menuToggle.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('bi-list', !isOpen);
+        icon.classList.toggle('bi-x-lg', isOpen);
+      }
+    };
+
+    menuToggle?.addEventListener('click', () => {
+      const isOpen = mobileMenu?.classList.contains('hidden');
+      setMenuState(isOpen);
+    });
+    
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu?.querySelectorAll('a');
+    mobileLinks?.forEach(link => {
+      link.addEventListener('click', () => {
+        setMenuState(false);
+      });
+    });
+
+    // Close menu on resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        setMenuState(false);
+      }
+    });
+    
+    // Pricing toggle
+    const toggle = document.getElementById('billing-toggle');
+    const priceEls = document.querySelectorAll('[data-monthly]');
+    const altMonthlyEls = document.querySelectorAll('[data-alt-monthly]');
+    const altYearlyEls = document.querySelectorAll('[data-alt-yearly]');
+    function updatePrices() {
+      const yearly = toggle.checked;
+      priceEls.forEach(el => {
+        const monthly = el.getAttribute('data-monthly');
+        const annually = el.getAttribute('data-yearly');
+        el.textContent = yearly && annually ? annually : (monthly || '');
+      });
+      altMonthlyEls.forEach(el => {
+        el.classList.toggle('hidden', yearly);
+      });
+      altYearlyEls.forEach(el => {
+        el.classList.toggle('hidden', !yearly);
+      });
+    }
+    toggle?.addEventListener('change', updatePrices);
+    updatePrices();
+
+    // Contact form mailto submit
+    const form = document.getElementById('contact-form');
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const budget = document.getElementById('budget').value;
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) return;
+      const subject = encodeURIComponent(`Sennkai Labs inquiry — ${name}`);
+      const bodyLines = [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        company ? `Company: ${company}` : '',
+        budget ? `Budget: ${budget}` : '',
+        '',
+        message
+      ].filter(Boolean);
+      const body = encodeURIComponent(bodyLines.join('\n'));
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    });
+
+    // Footer year
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear().toString();
+  </script>
+</body>
+</html>
+
+
